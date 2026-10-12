@@ -1,0 +1,25 @@
+server:
+  port: 8080
+  tomcat:
+    relaxed-query-chars: ["<", ">", "[", "]", "{", "}"]
+
+
+spring:
+  application:
+    name: globalpay-comp-management
+  datasource:
+    url: jdbc:h2:mem:globalpay;MODE=PostgreSQL;DATABASE_TO_LOWER=TRUE;DEFAULT_NULL_ORDERING=HIGH;DB_CLOSE_DELAY=-1
+    driver-class-name: org.h2.Driver
+    username: sa
+    password: 
+  flyway:
+    enabled: true
+    locations: classpath:db/migration
+    baseline-on-migrate: true
+  jooq:
+    sql-dialect: POSTGRES
+
+logging:
+  level:
+    com.globalpay.compensation: INFO
+    org.jooq.tools.LoggerListener: WARN
